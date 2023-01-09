@@ -35,7 +35,7 @@
  * @since	Version 1.0.0
  * @filesource
  */
-
+function v($text){echo '<pre>'.print_r($text,true).'</pre>';}
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT
