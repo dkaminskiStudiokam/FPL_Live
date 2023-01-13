@@ -1,8 +1,10 @@
 <?php
 
-namespace application\Domain\Model;
+namespace application\Domain\Model\Interfaces;
 
-trait TeamsRepositoryInterface
+use application\Domain\Model\Team;
+
+interface TeamsRepositoryInterface
 {
-
+    public function getTeam(string $teamId): Team;
 }

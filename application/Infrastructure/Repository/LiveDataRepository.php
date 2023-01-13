@@ -2,11 +2,10 @@
 
 namespace application\Infrastructure\Repository;
 
-use application\Domain\Model\Interfaces\TeamsRepositoryInterface;
 use application\Domain\Model\Team;
 use CI_DB_driver;
 
-class TeamsRepository implements TeamsRepositoryInterface
+class LiveDataRepository
 {
     /** @var CI_DB_driver $db */
     private $db;

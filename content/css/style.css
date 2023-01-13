@@ -1,5 +1,44 @@
 body, html {
     font-family: 'PT Sans', sans-serif;
     /* font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif; */
-    background: #ebebeb;
+    /*background: #ebebeb;*/
 }
+/*.score {*/
+/*    width: 53px;*/
+/*    height: 30px;*/
+/*}*/
+.single-match{
+    font-size: 14px;
+}
+.defender {
+    margin-top: 15px;
+}
+/*.player {*/
+/*    height: 100%;*/
+/*}*/
+.player {
+    overflow: auto;
+}
+.bonus-points-text {
+    font-size: 13px;
+}
+.bonus-points-score {
+    font-size: 12px;
+}
+.shirts {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-top: 5px;
+}
+.left-shirt {
+    position: absolute;
+    top: 0;
+    left: 30px;
+}
+.right-shirt {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+

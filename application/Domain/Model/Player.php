@@ -1,464 +1,484 @@
 <?php
 
-namespace application\Domain;
+namespace application\Domain\Model;
 
 class Player
 {
 	private int $id;
 	private string $firstName;
-	private string $second_name;
+	private string $lastName;
+    private string $webName;
 	private string $teamSite;
 	private int $minutes;
-	private int $goals_scored;
+	private int $goalsScored;
 	private int $assists;
-	private int $clean_sheets;
-	private int $goals_concededs;
-	private int $own_goals;
-	private int $penalties_saved;
-	private int $penalties_missed;
-	private int $yellow_cards;
-	private int $red_cards;
+	private int $cleanSheets;
+	private int $goalsConcedes;
+	private int $ownGoals;
+	private int $penaltiesSaved;
+	private int $penaltiesMissed;
+	private int $yellowCards;
+	private int $redCards;
 	private int $saves;
 	private int $bonus;
 	private int $bps;
 	private string $influence;
 	private string $creativity;
 	private string $threat;
-	private string $ict_index;
+	private string $ictIndex;
 	private int $totalPoints;
-	private bool $in_dreamteam;
-	private int $elementType;
+	private bool $inDreamTeam;
 
-	/**
-	 * @return int
-	 */
-	public function getElementType(): int
-	{
-		return $this->elementType;
-	}
+    //element_type
+    private int $position;
 
-	/**
-	 * @param int $element_type
-	 * @return Player
-	 */
-	public function setElementType(int $element_type): Player
-	{
-		$this->elementType = $element_type;
-		return $this;
-	}
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
-	/**
-	 * @return int
-	 */
-	public function getId(): int
-	{
-		return $this->id;
-	}
+    /**
+     * @param int $id
+     * @return Player
+     */
+    public function setId(int $id): Player
+    {
+        $this->id = $id;
+        return $this;
+    }
 
-	/**
-	 * @param int $id
-	 * @return Player
-	 */
-	public function setId(int $id): Player
-	{
-		$this->id = $id;
-		return $this;
-	}
+    /**
+     * @return string
+     */
+    public function getFirstName(): string
+    {
+        return $this->firstName;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getFirstName(): string
-	{
-		return $this->firstName;
-	}
+    /**
+     * @param string $firstName
+     * @return Player
+     */
+    public function setFirstName(string $firstName): Player
+    {
+        $this->firstName = $firstName;
+        return $this;
+    }
 
-	/**
-	 * @param string $first_name
-	 * @return Player
-	 */
-	public function setFirstName(string $first_name): Player
-	{
-		$this->firstName = $first_name;
-		return $this;
-	}
+    /**
+     * @return string
+     */
+    public function getLastName(): string
+    {
+        return $this->lastName;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getSecondName(): string
-	{
-		return $this->second_name;
-	}
+    /**
+     * @param string $lastName
+     * @return Player
+     */
+    public function setLastName(string $lastName): Player
+    {
+        $this->lastName = $lastName;
+        return $this;
+    }
 
-	/**
-	 * @param string $second_name
-	 * @return Player
-	 */
-	public function setSecondName(string $second_name): Player
-	{
-		$this->second_name = $second_name;
-		return $this;
-	}
+    /**
+     * @return string
+     */
+    public function getWebName(): string
+    {
+        return $this->webName;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getTeamSite(): string
-	{
-		return $this->teamSite;
-	}
+    /**
+     * @param string $webName
+     * @return Player
+     */
+    public function setWebName(string $webName): Player
+    {
+        $this->webName = $webName;
+        return $this;
+    }
 
-	/**
-	 * @param string $teamSite
-	 * @return Player
-	 */
-	public function setTeamSite(string $teamSite): Player
-	{
-		$this->teamSite = $teamSite;
-		return $this;
-	}
+    /**
+     * @return string
+     */
+    public function getTeamSite(): string
+    {
+        return $this->teamSite;
+    }
 
-	/**
-	 * @return int
-	 */
-	public function getMinutes(): int
-	{
-		return $this->minutes;
-	}
+    /**
+     * @param string $teamSite
+     * @return Player
+     */
+    public function setTeamSite(string $teamSite): Player
+    {
+        $this->teamSite = $teamSite;
+        return $this;
+    }
 
-	/**
-	 * @param int $minutes
-	 * @return Player
-	 */
-	public function setMinutes(int $minutes): Player
-	{
-		$this->minutes = $minutes;
-		return $this;
-	}
+    /**
+     * @return int
+     */
+    public function getMinutes(): int
+    {
+        return $this->minutes;
+    }
 
-	/**
-	 * @return int
-	 */
-	public function getGoalsScored(): int
-	{
-		return $this->goals_scored;
-	}
+    /**
+     * @param int $minutes
+     * @return Player
+     */
+    public function setMinutes(int $minutes): Player
+    {
+        $this->minutes = $minutes;
+        return $this;
+    }
 
-	/**
-	 * @param int $goals_scored
-	 * @return Player
-	 */
-	public function setGoalsScored(int $goals_scored): Player
-	{
-		$this->goals_scored = $goals_scored;
-		return $this;
-	}
+    /**
+     * @return int
+     */
+    public function getGoalsScored(): int
+    {
+        return $this->goalsScored;
+    }
 
-	/**
-	 * @return int
-	 */
-	public function getAssists(): int
-	{
-		return $this->assists;
-	}
+    /**
+     * @param int $goalsScored
+     * @return Player
+     */
+    public function setGoalsScored(int $goalsScored): Player
+    {
+        $this->goalsScored = $goalsScored;
+        return $this;
+    }
 
-	/**
-	 * @param int $assists
-	 * @return Player
-	 */
-	public function setAssists(int $assists): Player
-	{
-		$this->assists = $assists;
-		return $this;
-	}
+    /**
+     * @return int
+     */
+    public function getAssists(): int
+    {
+        return $this->assists;
+    }
 
-	/**
-	 * @return int
-	 */
-	public function getCleanSheets(): int
-	{
-		return $this->clean_sheets;
-	}
+    /**
+     * @param int $assists
+     * @return Player
+     */
+    public function setAssists(int $assists): Player
+    {
+        $this->assists = $assists;
+        return $this;
+    }
 
-	/**
-	 * @param int $clean_sheets
-	 * @return Player
-	 */
-	public function setCleanSheets(int $clean_sheets): Player
-	{
-		$this->clean_sheets = $clean_sheets;
-		return $this;
-	}
+    /**
+     * @return int
+     */
+    public function getCleanSheets(): int
+    {
+        return $this->cleanSheets;
+    }
 
-	/**
-	 * @return int
-	 */
-	public function getGoalsConcededs(): int
-	{
-		return $this->goals_concededs;
-	}
+    /**
+     * @param int $cleanSheets
+     * @return Player
+     */
+    public function setCleanSheets(int $cleanSheets): Player
+    {
+        $this->cleanSheets = $cleanSheets;
+        return $this;
+    }
 
-	/**
-	 * @param int $goals_concededs
-	 * @return Player
-	 */
-	public function setGoalsConcededs(int $goals_concededs): Player
-	{
-		$this->goals_concededs = $goals_concededs;
-		return $this;
-	}
+    /**
+     * @return int
+     */
+    public function getGoalsConcedes(): int
+    {
+        return $this->goalsConcedes;
+    }
 
-	/**
-	 * @return int
-	 */
-	public function getOwnGoals(): int
-	{
-		return $this->own_goals;
-	}
+    /**
+     * @param int $goalsConcedes
+     * @return Player
+     */
+    public function setGoalsConcedes(int $goalsConcedes): Player
+    {
+        $this->goalsConcedes = $goalsConcedes;
+        return $this;
+    }
 
-	/**
-	 * @param int $own_goals
-	 * @return Player
-	 */
-	public function setOwnGoals(int $own_goals): Player
-	{
-		$this->own_goals = $own_goals;
-		return $this;
-	}
+    /**
+     * @return int
+     */
+    public function getOwnGoals(): int
+    {
+        return $this->ownGoals;
+    }
 
-	/**
-	 * @return int
-	 */
-	public function getPenaltiesSaved(): int
-	{
-		return $this->penalties_saved;
-	}
+    /**
+     * @param int $ownGoals
+     * @return Player
+     */
+    public function setOwnGoals(int $ownGoals): Player
+    {
+        $this->ownGoals = $ownGoals;
+        return $this;
+    }
 
-	/**
-	 * @param int $penalties_saved
-	 * @return Player
-	 */
-	public function setPenaltiesSaved(int $penalties_saved): Player
-	{
-		$this->penalties_saved = $penalties_saved;
-		return $this;
-	}
+    /**
+     * @return int
+     */
+    public function getPenaltiesSaved(): int
+    {
+        return $this->penaltiesSaved;
+    }
 
-	/**
-	 * @return int
-	 */
-	public function getPenaltiesMissed(): int
-	{
-		return $this->penalties_missed;
-	}
+    /**
+     * @param int $penaltiesSaved
+     * @return Player
+     */
+    public function setPenaltiesSaved(int $penaltiesSaved): Player
+    {
+        $this->penaltiesSaved = $penaltiesSaved;
+        return $this;
+    }
 
-	/**
-	 * @param int $penalties_missed
-	 * @return Player
-	 */
-	public function setPenaltiesMissed(int $penalties_missed): Player
-	{
-		$this->penalties_missed = $penalties_missed;
-		return $this;
-	}
+    /**
+     * @return int
+     */
+    public function getPenaltiesMissed(): int
+    {
+        return $this->penaltiesMissed;
+    }
 
-	/**
-	 * @return int
-	 */
-	public function getYellowCards(): int
-	{
-		return $this->yellow_cards;
-	}
+    /**
+     * @param int $penaltiesMissed
+     * @return Player
+     */
+    public function setPenaltiesMissed(int $penaltiesMissed): Player
+    {
+        $this->penaltiesMissed = $penaltiesMissed;
+        return $this;
+    }
 
-	/**
-	 * @param int $yellow_cards
-	 * @return Player
-	 */
-	public function setYellowCards(int $yellow_cards): Player
-	{
-		$this->yellow_cards = $yellow_cards;
-		return $this;
-	}
+    /**
+     * @return int
+     */
+    public function getYellowCards(): int
+    {
+        return $this->yellowCards;
+    }
 
-	/**
-	 * @return int
-	 */
-	public function getRedCards(): int
-	{
-		return $this->red_cards;
-	}
+    /**
+     * @param int $yellowCards
+     * @return Player
+     */
+    public function setYellowCards(int $yellowCards): Player
+    {
+        $this->yellowCards = $yellowCards;
+        return $this;
+    }
 
-	/**
-	 * @param int $red_cards
-	 * @return Player
-	 */
-	public function setRedCards(int $red_cards): Player
-	{
-		$this->red_cards = $red_cards;
-		return $this;
-	}
+    /**
+     * @return int
+     */
+    public function getRedCards(): int
+    {
+        return $this->redCards;
+    }
 
-	/**
-	 * @return int
-	 */
-	public function getSaves(): int
-	{
-		return $this->saves;
-	}
+    /**
+     * @param int $redCards
+     * @return Player
+     */
+    public function setRedCards(int $redCards): Player
+    {
+        $this->redCards = $redCards;
+        return $this;
+    }
 
-	/**
-	 * @param int $saves
-	 * @return Player
-	 */
-	public function setSaves(int $saves): Player
-	{
-		$this->saves = $saves;
-		return $this;
-	}
+    /**
+     * @return int
+     */
+    public function getSaves(): int
+    {
+        return $this->saves;
+    }
 
-	/**
-	 * @return int
-	 */
-	public function getBonus(): int
-	{
-		return $this->bonus;
-	}
+    /**
+     * @param int $saves
+     * @return Player
+     */
+    public function setSaves(int $saves): Player
+    {
+        $this->saves = $saves;
+        return $this;
+    }
 
-	/**
-	 * @param int $bonus
-	 * @return Player
-	 */
-	public function setBonus(int $bonus): Player
-	{
-		$this->bonus = $bonus;
-		return $this;
-	}
+    /**
+     * @return int
+     */
+    public function getBonus(): int
+    {
+        return $this->bonus;
+    }
 
-	/**
-	 * @return int
-	 */
-	public function getBps(): int
-	{
-		return $this->bps;
-	}
+    /**
+     * @param int $bonus
+     * @return Player
+     */
+    public function setBonus(int $bonus): Player
+    {
+        $this->bonus = $bonus;
+        return $this;
+    }
 
-	/**
-	 * @param int $bps
-	 * @return Player
-	 */
-	public function setBps(int $bps): Player
-	{
-		$this->bps = $bps;
-		return $this;
-	}
+    /**
+     * @return int
+     */
+    public function getBps(): int
+    {
+        return $this->bps;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getInfluence(): string
-	{
-		return $this->influence;
-	}
+    /**
+     * @param int $bps
+     * @return Player
+     */
+    public function setBps(int $bps): Player
+    {
+        $this->bps = $bps;
+        return $this;
+    }
 
-	/**
-	 * @param string $influence
-	 * @return Player
-	 */
-	public function setInfluence(string $influence): Player
-	{
-		$this->influence = $influence;
-		return $this;
-	}
+    /**
+     * @return string
+     */
+    public function getInfluence(): string
+    {
+        return $this->influence;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getCreativity(): string
-	{
-		return $this->creativity;
-	}
+    /**
+     * @param string $influence
+     * @return Player
+     */
+    public function setInfluence(string $influence): Player
+    {
+        $this->influence = $influence;
+        return $this;
+    }
 
-	/**
-	 * @param string $creativity
-	 * @return Player
-	 */
-	public function setCreativity(string $creativity): Player
-	{
-		$this->creativity = $creativity;
-		return $this;
-	}
+    /**
+     * @return string
+     */
+    public function getCreativity(): string
+    {
+        return $this->creativity;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getThreat(): string
-	{
-		return $this->threat;
-	}
+    /**
+     * @param string $creativity
+     * @return Player
+     */
+    public function setCreativity(string $creativity): Player
+    {
+        $this->creativity = $creativity;
+        return $this;
+    }
 
-	/**
-	 * @param string $threat
-	 * @return Player
-	 */
-	public function setThreat(string $threat): Player
-	{
-		$this->threat = $threat;
-		return $this;
-	}
+    /**
+     * @return string
+     */
+    public function getThreat(): string
+    {
+        return $this->threat;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getIctIndex(): string
-	{
-		return $this->ict_index;
-	}
+    /**
+     * @param string $threat
+     * @return Player
+     */
+    public function setThreat(string $threat): Player
+    {
+        $this->threat = $threat;
+        return $this;
+    }
 
-	/**
-	 * @param string $ict_index
-	 * @return Player
-	 */
-	public function setIctIndex(string $ict_index): Player
-	{
-		$this->ict_index = $ict_index;
-		return $this;
-	}
+    /**
+     * @return string
+     */
+    public function getIctIndex(): string
+    {
+        return $this->ictIndex;
+    }
 
-	/**
-	 * @return int
-	 */
-	public function getTotalPoints(): int
-	{
-		return $this->totalPoints;
-	}
+    /**
+     * @param string $ictIndex
+     * @return Player
+     */
+    public function setIctIndex(string $ictIndex): Player
+    {
+        $this->ictIndex = $ictIndex;
+        return $this;
+    }
 
-	/**
-	 * @param int $totalPoints
-	 * @return Player
-	 */
-	public function setTotalPoints(int $totalPoints): Player
-	{
-		$this->totalPoints = $totalPoints;
-		return $this;
-	}
+    /**
+     * @return int
+     */
+    public function getTotalPoints(): int
+    {
+        return $this->totalPoints;
+    }
 
-	/**
-	 * @return bool
-	 */
-	public function isInDreamteam(): bool
-	{
-		return $this->in_dreamteam;
-	}
+    /**
+     * @param int $totalPoints
+     * @return Player
+     */
+    public function setTotalPoints(int $totalPoints): Player
+    {
+        $this->totalPoints = $totalPoints;
+        return $this;
+    }
 
-	/**
-	 * @param bool $in_dreamteam
-	 * @return Player
-	 */
-	public function setInDreamteam(bool $in_dreamteam): Player
-	{
-		$this->in_dreamteam = $in_dreamteam;
-		return $this;
-	}
-	
+    /**
+     * @return bool
+     */
+    public function isInDreamTeam(): bool
+    {
+        return $this->inDreamTeam;
+    }
+
+    /**
+     * @param bool $inDreamTeam
+     * @return Player
+     */
+    public function setInDreamTeam(bool $inDreamTeam): Player
+    {
+        $this->inDreamTeam = $inDreamTeam;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPosition(): int
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param int $position
+     * @return Player
+     */
+    public function setPosition(int $position): Player
+    {
+        $this->position = $position;
+        return $this;
+    }
 }

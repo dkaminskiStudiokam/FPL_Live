@@ -2,12 +2,13 @@
 
 namespace application\Infrastructure\WebServices;
 
-class PlayersWS
+class LiveDataWS
 {
-    public function getPlayers(): array
+    public function getLiveData(): array
     {
-        $playersUrl = "https://fantasy.premierleague.com/api/bootstrap-static/";
-        $jsonPlayers = file_get_contents($playersUrl);
-        return json_decode($jsonPlayers, true);
+        // todo narazie kolejke ustawiam na sztywno, trzeba bedzie w pozniejszym etapie jakos to zrobic automatycznie
+        $liveDataUrl = "https://fantasy.premierleague.com/api/event/19/live/";
+        $jsonLiveData = file_get_contents($liveDataUrl);
+        return json_decode($jsonLiveData, true);
     }
 }

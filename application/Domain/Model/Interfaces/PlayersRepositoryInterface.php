@@ -2,9 +2,7 @@
 
 namespace application\Domain\Model\Interfaces;
 
-use application\Domain\Model\Team;
-
-interface TeamsRepositoryInterface
+interface PlayersRepositoryInterface
 {
-    public function getTeam(string $teamId): Team;
+    public function getPlayersByTeamId(int $id);
 }
