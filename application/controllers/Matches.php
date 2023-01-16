@@ -1,10 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+use application\Application\Services\FillPlayersWithLiveDataService;
 use application\Application\Services\PrepareMatchService;
 use application\Application\Services\PreparePlayersToMatchService;
 use application\Infrastructure\Repository\PlayersRepository;
 use application\Infrastructure\Repository\TeamsRepository;
+use application\Infrastructure\WebServices\LiveDataWS;
 use application\Infrastructure\WebServices\MatchInfoWS;
 use application\Infrastructure\WebServices\PlayersWS;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -49,8 +51,19 @@ class Matches extends CI_Controller
         $playersRepo = new PlayersRepository($this->db);
         $playersRawData = $playerWS->getPlayers();
         $preparePlayersService = new PreparePlayersToMatchService($playersRepo);
-        $players = $preparePlayersService->execute($match);
-        dd($players);
+        $bothTeamsPlayers = $preparePlayersService->execute($match);
+        
+        //fpl_id w bazie danych odpowiada id tutaj (liveData)
+        $liveDataWs = new LiveDataWS();
+        $fillPlayersWithLiveDataService = new FillPlayersWithLiveDataService();
+        $result = $fillPlayersWithLiveDataService->execute($bothTeamsPlayers);
+        
+        //tutaj Rashford
+//        dd(($liveDataWs->getLiveData())['elements'][334]);
+//        dd($liveDataWs->getLiveData());
+        
+        
+        dd($bothTeamsPlayers);
         
         echo $serializer->serialize($match, 'json');
     }
