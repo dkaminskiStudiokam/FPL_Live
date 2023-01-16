@@ -57,7 +57,6 @@ class Matches extends CI_Controller
         $liveDataWs = new LiveDataWS();
         $fillPlayersWithLiveDataService = new FillPlayersWithLiveDataService();
         $result = $fillPlayersWithLiveDataService->execute($bothTeamsPlayers);
-        dd(tutaj robie bardache);
         
         //tutaj Rashford
 //        dd(($liveDataWs->getLiveData())['elements'][334]);
