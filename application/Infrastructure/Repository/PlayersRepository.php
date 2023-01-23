@@ -45,7 +45,7 @@ class PlayersRepository implements PlayersRepositoryInterface
         foreach ($playersResultFromDb as $row) {
             $player = new Player();
             $player
-                ->setId($row->id)
+                ->setId($row->fpl_id)
                 ->setFirstName($row->first_name)
                 ->setLastName($row->last_name)
                 ->setPosition($row->id)

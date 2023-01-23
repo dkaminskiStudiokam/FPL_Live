@@ -14,18 +14,23 @@ class PrepareMatchService
         $this->teamsRepo = $teamsRepo;
     }
 
+    /**
+     * @param array $rawMatchInfo
+     * @return Game
+     */
     public function execute(array $rawMatchInfo): Game
     {
         $match = new Game();
         $match
             ->setHomeTeamId($rawMatchInfo['team_h'])
-            ->setHomeTeamScore($rawMatchInfo['team_h_score'])
+            ->setHomeTeamScore($rawMatchInfo['team_h_score']);
+        $teamHome = $this->teamsRepo->getTeam($match->getHomeTeamId());
+        $match->setHomeTeamName($teamHome->getName());
+        
+        $match
             ->setAwayTeamId($rawMatchInfo['team_a'])
             ->setAwayTeamScore($rawMatchInfo['team_a_score']);
-        $teamHome = $this->teamsRepo->getTeam($match->getHomeTeamId());
         $teamAway = $this->teamsRepo->getTeam($match->getAwayTeamId());
-
-        $match->setHomeTeamName($teamHome->getName());
         $match->setAwayTeamName($teamAway->getName());
 
         return $match;

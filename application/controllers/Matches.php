@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 use application\Application\Services\FillPlayersWithLiveDataService;
 use application\Application\Services\PrepareMatchService;
 use application\Application\Services\PreparePlayersToMatchService;
+use application\Domain\Model\Game;
 use application\Infrastructure\Repository\PlayersRepository;
 use application\Infrastructure\Repository\TeamsRepository;
 use application\Infrastructure\WebServices\LiveDataWS;
@@ -23,8 +24,7 @@ class Matches extends CI_Controller
         );
         $this->load->view('themes/header', $data);
         $gameWeekData = $this->startData();
-        $this->load->view('all_matches', $gameWeekData);
-
+        $this->load->view('single_match', $gameWeekData);
     }
     public function updatePlayers()
     {
@@ -32,6 +32,8 @@ class Matches extends CI_Controller
         $playersWS = new PlayersWS();
         $rawPlayersData = $playersWS->getPlayers();
         $playersRepo->insertPlayersIntoDb($rawPlayersData['elements']);
+
+        v('Import został zakończony');
     }
     public function getMatch()
     {
@@ -39,33 +41,14 @@ class Matches extends CI_Controller
         $normalizers = [new ObjectNormalizer()];
         $serializer = new Serializer($normalizers, $encoders);
 
-        $id = 187;
-        $matchWS = new MatchInfoWS();
-        $rawMatchData = $matchWS->getMatchById($id);
-        $teamsRepo = new TeamsRepository($this->db);
-        $teamHome = $teamsRepo->getTeam(1);
-        $prepareMatchService = new PrepareMatchService($teamsRepo);
-        $match = $prepareMatchService->execute($rawMatchData);
+        // todo to id meczu, trzeba bedzie je wysylac z frontu
+        $match = $this->getMatchData(195);
+        $bothTeamsPlayers = $this->getBothTeamsPlayers($match);
+        $result = $this->fillPlayers($bothTeamsPlayers);
 
-        $playerWS = new PlayersWS();
-        $playersRepo = new PlayersRepository($this->db);
-        $playersRawData = $playerWS->getPlayers();
-        $preparePlayersService = new PreparePlayersToMatchService($playersRepo);
-        $bothTeamsPlayers = $preparePlayersService->execute($match);
-        
-        //fpl_id w bazie danych odpowiada id tutaj (liveData)
-        $liveDataWs = new LiveDataWS();
-        $fillPlayersWithLiveDataService = new FillPlayersWithLiveDataService();
-        $result = $fillPlayersWithLiveDataService->execute($bothTeamsPlayers);
-        
-        //tutaj Rashford
+        // 334 Rashford
 //        dd(($liveDataWs->getLiveData())['elements'][334]);
-//        dd($liveDataWs->getLiveData());
-        
-        
-        dd($bothTeamsPlayers);
-        
-        echo $serializer->serialize($match, 'json');
+        echo $serializer->serialize($result, 'json');
     }
     public function startData(): array
     {
@@ -83,5 +66,39 @@ class Matches extends CI_Controller
         }
 
         return $result;
+    }
+
+    /**
+     * @param int $id
+     * @return Game
+     */
+    private function getMatchData(int $id): Game
+    {
+        $matchWS = new MatchInfoWS();
+        $rawMatchData = $matchWS->getMatchById($id);
+        $teamsRepo = new TeamsRepository($this->db);
+        $prepareMatchService = new PrepareMatchService($teamsRepo);
+        $test = $prepareMatchService->execute($rawMatchData);
+
+        return $prepareMatchService->execute($rawMatchData);
+    }
+    
+    private function getBothTeamsPlayers(Game $matchData): Game
+    {
+        $playersRepo = new PlayersRepository($this->db);
+        $preparePlayersService = new PreparePlayersToMatchService($playersRepo);
+        $preparePlayersService->execute($matchData);
+
+        return $matchData;
+    }
+
+    private function fillPlayers(Game $game): Game
+    {
+        //fpl_id w bazie danych odpowiada id tutaj (liveData)
+        $liveDataWs = new LiveDataWS();
+        $rawLiveData = $liveDataWs->getLiveData();
+        $fillPlayersWithLiveDataService = new FillPlayersWithLiveDataService();
+
+        return $fillPlayersWithLiveDataService->execute($rawLiveData, $game);
     }
 }

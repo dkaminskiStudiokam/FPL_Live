@@ -9,11 +9,19 @@ class Game
     private string $homeTeamName;
     private int $homeTeamScore;
     private string $homeTeamShortName;
+    /**
+     * @var Player[]
+     */
+    private array $homeTeamPlayers;
     private int $awayTeamId;
     private int $awayTeamCode;
     private string $awayTeamName;
     private int $awayTeamScore;
     private string $awayTeamShortName;
+    /**
+     * @var Player[]
+     */
+    private array $awayTeamPlayers;
 
     /**
      * @return int
@@ -106,6 +114,24 @@ class Game
     }
 
     /**
+     * @return array
+     */
+    public function getHomeTeamPlayers(): array
+    {
+        return $this->homeTeamPlayers;
+    }
+
+    /**
+     * @param array $homeTeamPlayers
+     * @return Game
+     */
+    public function setHomeTeamPlayers(array $homeTeamPlayers): Game
+    {
+        $this->homeTeamPlayers = $homeTeamPlayers;
+        return $this;
+    }
+
+    /**
      * @return int
      */
     public function getAwayTeamId(): int
@@ -194,4 +220,24 @@ class Game
         $this->awayTeamShortName = $awayTeamShortName;
         return $this;
     }
+
+    /**
+     * @return array
+     */
+    public function getAwayTeamPlayers(): array
+    {
+        return $this->awayTeamPlayers;
+    }
+
+    /**
+     * @param array $awayTeamPlayers
+     * @return Game
+     */
+    public function setAwayTeamPlayers(array $awayTeamPlayers): Game
+    {
+        $this->awayTeamPlayers = $awayTeamPlayers;
+        return $this;
+    }
+
+    
 }

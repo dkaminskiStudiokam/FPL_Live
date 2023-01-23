@@ -13,12 +13,16 @@ class PreparePlayersToMatchService
     {
         $this->playersRepo = $playersRepo;
     }
-
-    public function execute(Game $teamsId): array
+    public function execute(Game $matchData): Game
     {
-        $homeTeamPlayers = $this->playersRepo->getPlayersByTeamId($teamsId->getHomeTeamId());
-        $awayTeamPlayers = $this->playersRepo->getPlayersByTeamId($teamsId->getAwayTeamId());
+//        dd($matchData);
 
-        return ['homeTeam' => $homeTeamPlayers, 'awayTeam' => $awayTeamPlayers];
+        $homeTeamPlayers = $this->playersRepo->getPlayersByTeamId($matchData->getHomeTeamId());
+        $awayTeamPlayers = $this->playersRepo->getPlayersByTeamId($matchData->getAwayTeamId());
+
+        $matchData->setHomeTeamPlayers($homeTeamPlayers);
+        $matchData->setAwayTeamPlayers($awayTeamPlayers);
+
+        return $matchData;
     }
 }

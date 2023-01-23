@@ -23,14 +23,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             },
             methods: {},
             mounted() {
-                // axios.get('home/start_data')
-                //     .then((response) => {
-                //         let resp = response.data;
-                //         this.verbs = resp.allVerbs;
-                //         this.setGroupToAllVerbs();
-                //         this.newVerb();
-                //     });
-                // this.getAllGroups();
             }
 
         });
