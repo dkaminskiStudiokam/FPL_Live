@@ -21,11 +21,8 @@
 
 </head>
 <body>
-<div class="container">
-    <div class="row text-center">
-        <div class="col-12"><img src="content/img/FPL_bps_logo.jpg" alt=""></div>
-    </div>
+<div class="container_single_match">
     <div class="row text-center mt-2">
-        <div class="col-12"><img style="width: 100px;" src="content/img/FPL_logo.jpg" alt="fpl_logo"></div>
+        <div class="col-12"><img style="width: 40px;" src="content/img/FPL_logo.jpg" alt="fpl_logo"></div>
     </div>
 </div>

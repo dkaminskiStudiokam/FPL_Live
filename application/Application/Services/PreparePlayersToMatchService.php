@@ -15,8 +15,6 @@ class PreparePlayersToMatchService
     }
     public function execute(Game $matchData): Game
     {
-//        dd($matchData);
-
         $homeTeamPlayers = $this->playersRepo->getPlayersByTeamId($matchData->getHomeTeamId());
         $awayTeamPlayers = $this->playersRepo->getPlayersByTeamId($matchData->getAwayTeamId());
 

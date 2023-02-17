@@ -1,21 +1,72 @@
 body, html {
-    font-family: 'PT Sans', sans-serif;
-    /* font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif; */
-    /*background: #ebebeb;*/
+    font-family: 'Signika Negative', sans-serif;
 }
-/*.score {*/
-/*    width: 53px;*/
-/*    height: 30px;*/
-/*}*/
+.container_single_match {
+    width: 250px;
+    font-size: 12px;
+    margin: 0 auto;
+}
+
+.teams_score_logo-home {
+    width: 30%;
+}
+
+.teams_score__table {
+    width: 44%;
+    margin-top: 7px;
+}
+
+.teams_score_logo-away {
+    width: 30%;
+    text-align: right;
+}
+
+.table__home_team {
+    width: 100%;
+}
+
+.table__away_team {
+    width: 100%;
+}
+
+.table__score {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.table__score-pill {
+    width: 55px;
+    margin: 0 auto;
+    background-color: #37003c;
+    border-radius: 15px;
+}
+
 .single-match{
     font-size: 14px;
+    /*overflow: auto;*/
+    /*box-sizing: content-box;*/
 }
+
+.single_match__players {
+    width: 100%;
+}
+
+.player_data {
+    overflow: auto;
+}
+
+.team__points {
+    background-color: #37003c;
+    width: 20px;
+    height: 16px;
+    margin: 0 5px;
+    border-radius: 5px;
+}
+
+
 .defender {
     margin-top: 15px;
 }
-/*.player {*/
-/*    height: 100%;*/
-/*}*/
 .player {
     overflow: auto;
 }

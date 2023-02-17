@@ -22,7 +22,7 @@ class Matches extends CI_Controller
         $data = array(
             'title' => 'FPL'
         );
-        $this->load->view('themes/header', $data);
+        $this->load->view('themes/small_logo', $data);
         $gameWeekData = $this->startData();
         $this->load->view('single_match', $gameWeekData);
     }
